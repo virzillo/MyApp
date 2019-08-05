@@ -18,6 +18,7 @@ class CreateCustomersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('email');
+            $table->integer('active');
             $table->integer('type');
             $table->timestamps();
         });

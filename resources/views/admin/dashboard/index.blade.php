@@ -2,51 +2,26 @@
 
 @push('style')
      <!-- chartist CSS -->
-     <link href="../assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
-     <link href="../assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
-     <link href="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+     <link href="{{url('/')}}/assets/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet">
+     <link href="{{url('/')}}/assets/plugins/chartist-js/dist/chartist-init.css" rel="stylesheet">
+     <link href="{{url('/')}}/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
      <!--This page css - Morris CSS -->
-     <link href="../assets/plugins/c3-master/c3.min.css" rel="stylesheet">
+     <link href="{{url('/')}}/assets/plugins/c3-master/c3.min.css" rel="stylesheet">
 @endpush
 
 @section('title') Dashboard - AlphaOmega @endsection
 
-@section('breadcrumb')
-       <div class="row page-titles">
-                    <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">Dashboard</h3>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </div>
-                    <div class="col-md-7 col-4 align-self-center">
-                        <div class="d-flex m-t-10 justify-content-end">
-                            <div class="d-flex m-r-20 m-l-10 hidden-md-down">
-                                <div class="chart-text m-r-10">
-                                    <h6 class="m-b-0"><small>THIS MONTH</small></h6>
-                                    <h4 class="m-t-0 text-info">$58,356</h4></div>
-                                <div class="spark-chart">
-                                    <div id="monthchart"></div>
-                                </div>
-                            </div>
-                            <div class="d-flex m-r-20 m-l-10 hidden-md-down">
-                                <div class="chart-text m-r-10">
-                                    <h6 class="m-b-0"><small>LAST MONTH</small></h6>
-                                    <h4 class="m-t-0 text-primary">$48,356</h4></div>
-                                <div class="spark-chart">
-                                    <div id="lastmonthchart"></div>
-                                </div>
-                            </div>
-                            {{-- <div class="">
-                                <button class="right-side-toggle waves-effect waves-light btn-success btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
-                            </div> --}}
-                        </div>
-                    </div>
-                </div>
-@endsection
 
 @section('content')
+
+@include('widgets.breadcrumb', [
+    'titolo' => 'Dashboard',
+    'posizione' => 'Dashboard',
+    'pulsante' => ''
+    
+    ] )
+
+
          <!-- Row -->
          <div class="row">
                 <!-- Column -->
@@ -106,7 +81,7 @@
                 <div class="col-lg-4 col-xlg-3 col-md-5">
                     <div class="card blog-widget">
                         <div class="card-body">
-                            <div class="blog-image"><img src="../assets/images/big/img1.jpg" alt="img" class="img-responsive"/></div>
+                            <div class="blog-image"><img src="{{url('/')}}/assets/images/big/img1.jpg" alt="img" class="img-responsive"/></div>
                              <h3>Business development new rules for 2017</h3>
                             <label class="label label-rounded label-success">Technology</label>
                             <p class="m-t-20 m-b-20">
@@ -201,7 +176,7 @@
                 <!-- Column -->
                 <div class="col-lg-4 col-md-4">
                     <div class="card">
-                        <img class="" src="../assets/images/background/weatherbg.jpg" alt="Card image cap">
+                        <img class="" src="{{url('/')}}/assets/images/background/weatherbg.jpg" alt="Card image cap">
                         <div class="card-img-overlay" style="height:110px;">
                             <h3 class="card-title text-white m-b-0 dl">New Delhi</h3>
                             <small class="card-text text-white font-light">Sunday 15 march</small>
@@ -235,9 +210,9 @@
                 <div class="col-lg-4 col-xlg-3 col-md-5">
                      <!-- Column -->
                     <div class="card">
-                        <img class="card-img-top" src="../assets/images/background/profile-bg.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="{{url('/')}}/assets/images/background/profile-bg.jpg" alt="Card image cap">
                         <div class="card-body little-profile text-center">
-                            <div class="pro-img"><img src="../assets/images/users/4.jpg" alt="user"/></div>
+                            <div class="pro-img"><img src="{{url('/')}}/assets/images/users/4.jpg" alt="user"/></div>
                             <h3 class="m-b-0">Angela Dominic</h3>
                             <p>Web Designer &amp; Developer</p>
                             <a href="javascript:void(0)" class="m-t-10 waves-effect waves-dark btn btn-primary btn-md btn-rounded">Follow</a>
@@ -260,13 +235,13 @@
                                 <div class="message-widget contact-widget">
                                     <!-- Message -->
                                     <a href="#">
-                                        <div class="user-img"> <img src="../assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                        <div class="user-img"> <img src="{{url('/')}}/assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Pavan kumar</h5> <span class="mail-desc">info@wrappixel.com</span></div>
                                     </a>
                                     <!-- Message -->
                                     <a href="#">
-                                        <div class="user-img"> <img src="../assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                        <div class="user-img"> <img src="{{url('/')}}/assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Sonu Nigam</h5> <span class="mail-desc">pamela1987@gmail.com</span></div>
                                     </a>
@@ -278,7 +253,7 @@
                                     </a>
                                     <!-- Message -->
                                     <a href="#">
-                                        <div class="user-img"> <img src="../assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                        <div class="user-img"> <img src="{{url('/')}}/assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
                                         <div class="mail-contnet">
                                             <h5>Pavan kumar</h5> <span class="mail-desc">kat@gmail.com</span></div>
                                     </a>
@@ -302,15 +277,15 @@
                                 <div class="card-body">
                                     <div class="profiletimeline">
                                         <div class="sl-item">
-                                            <div class="sl-left"> <img src="../assets/images/users/1.jpg" alt="user" class="img-circle"> </div>
+                                            <div class="sl-left"> <img src="{{url('/')}}/assets/images/users/1.jpg" alt="user" class="img-circle"> </div>
                                             <div class="sl-right">
                                                 <div><a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
                                                     <p>assign a new task <a href="#"> Design weblayout</a></p>
                                                     <div class="row">
-                                                        <div class="col-lg-3 col-md-6 m-b-20"><img src="../assets/images/big/img1.jpg" alt="user" class="img-responsive radius"></div>
-                                                        <div class="col-lg-3 col-md-6 m-b-20"><img src="../assets/images/big/img2.jpg" alt="user" class="img-responsive radius"></div>
-                                                        <div class="col-lg-3 col-md-6 m-b-20"><img src="../assets/images/big/img3.jpg" alt="user" class="img-responsive radius"></div>
-                                                        <div class="col-lg-3 col-md-6 m-b-20"><img src="../assets/images/big/img4.jpg" alt="user" class="img-responsive radius"></div>
+                                                        <div class="col-lg-3 col-md-6 m-b-20"><img src="{{url('/')}}/assets/images/big/img1.jpg" alt="user" class="img-responsive radius"></div>
+                                                        <div class="col-lg-3 col-md-6 m-b-20"><img src="{{url('/')}}/assets/images/big/img2.jpg" alt="user" class="img-responsive radius"></div>
+                                                        <div class="col-lg-3 col-md-6 m-b-20"><img src="{{url('/')}}/assets/images/big/img3.jpg" alt="user" class="img-responsive radius"></div>
+                                                        <div class="col-lg-3 col-md-6 m-b-20"><img src="{{url('/')}}/assets/images/big/img4.jpg" alt="user" class="img-responsive radius"></div>
                                                     </div>
                                                     <div class="like-comm"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>
                                                 </div>
@@ -318,11 +293,11 @@
                                         </div>
                                         <hr>
                                         <div class="sl-item">
-                                            <div class="sl-left"> <img src="../assets/images/users/2.jpg" alt="user" class="img-circle"> </div>
+                                            <div class="sl-left"> <img src="{{url('/')}}/assets/images/users/2.jpg" alt="user" class="img-circle"> </div>
                                             <div class="sl-right">
                                                 <div> <a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
                                                     <div class="m-t-20 row">
-                                                        <div class="col-md-3 col-xs-12"><img src="../assets/images/big/img1.jpg" alt="user" class="img-responsive radius"></div>
+                                                        <div class="col-md-3 col-xs-12"><img src="{{url('/')}}/assets/images/big/img1.jpg" alt="user" class="img-responsive radius"></div>
                                                         <div class="col-md-9 col-xs-12">
                                                             <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p> <a href="#" class="btn btn-success"> Design weblayout</a></div>
                                                     </div>
@@ -332,7 +307,7 @@
                                         </div>
                                         <hr>
                                         <div class="sl-item">
-                                            <div class="sl-left"> <img src="../assets/images/users/3.jpg" alt="user" class="img-circle"> </div>
+                                            <div class="sl-left"> <img src="{{url('/')}}/assets/images/users/3.jpg" alt="user" class="img-circle"> </div>
                                             <div class="sl-right">
                                                 <div><a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
                                                     <p class="m-t-10"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper </p>
@@ -342,7 +317,7 @@
                                         </div>
                                         <hr>
                                         <div class="sl-item">
-                                            <div class="sl-left"> <img src="../assets/images/users/4.jpg" alt="user" class="img-circle"> </div>
+                                            <div class="sl-left"> <img src="{{url('/')}}/assets/images/users/4.jpg" alt="user" class="img-circle"> </div>
                                             <div class="sl-right">
                                                 <div><a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
                                                     <blockquote class="m-t-10">
@@ -463,11 +438,11 @@
 
 @push('script')
     <!-- chartist chart -->
-    <script src="../assets/plugins/chartist-js/dist/chartist.min.js"></script>
-    <script src="../assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="{{url('/')}}/assets/plugins/chartist-js/dist/chartist.min.js"></script>
+    <script src="{{url('/')}}/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
     <!--c3 JavaScript -->
-    <script src="../assets/plugins/d3/d3.min.js"></script>
-    <script src="../assets/plugins/c3-master/c3.min.js"></script>
+    <script src="{{url('/')}}/assets/plugins/d3/d3.min.js"></script>
+    <script src="{{url('/')}}/assets/plugins/c3-master/c3.min.js"></script>
     <!-- Chart JS -->
-    <script src="js/dashboard1.js"></script>
+    <script src="{{url('/')}}/js/dashboard1.js"></script>
 @endpush

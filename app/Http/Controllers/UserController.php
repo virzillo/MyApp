@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Customer;
 use Illuminate\Http\Request;
-use App\Company;
+use App\User;
 
-class CustomerController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
-        $companies = Company::all();
-        return view('admin.customers.index', compact('customers', 'companies'));
+        $users = User::all();
+        return view('admin.users.index', compact('users'));
+        //
     }
 
     /**
@@ -38,19 +37,16 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-
-        Customer::create($this->validateRequest());
-        // return view('admin.customers.index', compact('customers', 'companies'));
-        return back();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Customer  $customer
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show($id)
     {
         //
     }
@@ -58,10 +54,10 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Customer  $customer
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit($id)
     {
         //
     }
@@ -70,35 +66,22 @@ class CustomerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Customer  $customer
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, $id)
     {
-        $customer->update($this->validateRequest());
-        return back();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Customer  $customer
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy($id)
     {
         //
-    }
-
-    private function validateRequest()
-    {
-
-        return  request()->validate([
-            'name' => 'required|min:2',
-            'email' => 'required|email',
-            'active' => 'required',
-            'type' => 'required',
-            'company_id' => 'required'
-        ]);
     }
 }

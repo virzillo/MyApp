@@ -17,4 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['prefix' => 'admin', 'middleware' => ['role:superadmin']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+    Route::resource('clients', 'ClientController');
+    Route::resource('users', 'UserController');
+
+    Route::resource('customers', 'CustomerController');
+
+    Route::post('/company', 'CompanyController@store')->name('company.store');
+});

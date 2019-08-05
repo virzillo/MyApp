@@ -37,10 +37,13 @@
                             </ul> --}}
                         </li>
                         <li>
-                            <a class=" waves-effect waves-dark" href="{{route('clients')}}" aria-expanded="false"><i class="mdi  mdi-gauge"></i><span class="hide-menu">Client</span></a>
+                            <a class=" waves-effect waves-dark" href="{{route('clients.index')}}" aria-expanded="false"><i class="mdi  mdi-gauge"></i><span class="hide-menu">Client</span></a>
 
                         </li>
+                          <li>
+                            <a class=" waves-effect waves-dark" href="{{route('customers.index')}}" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Customer</span></a>
 
+                        </li>
                         <li>
                             <a class=" waves-effect waves-dark" href="{{route('users.index')}}" aria-expanded="false"><i class="mdi  mdi-account-convert"></i><span class="hide-menu">Utenti</span></a>
 

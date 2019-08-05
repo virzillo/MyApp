@@ -1,30 +1,16 @@
 @extends('layouts.master')
 
 
-@section('breadcrumb')
-       <div class="row page-titles">
-                    <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">Utenti</h3>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Utenti</li>
-                        </ol>
-                    </div>
-                    <div class="col-md-7 col-4 align-self-center">
-                        <div class="d-flex m-t-10 justify-content-end">
-                            <div class="d-flex m-r-20 m-l-10 hidden-md-down">
-
-                            </div>
-                            <div class="d-flex m-r-20 m-l-10 hidden-md-down">
-                                <a href="#" data-toggle="modal" data-target="#responsive-modal" class="btn waves-effect waves-light btn-rounded btn-primary justify-content-end">Add User</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-@endsection
-
 @section('content')
+
+@include('widgets.breadcrumb', [
+    'titolo' => 'User',
+    'posizione' => 'User',
+    'pulsante' => ' <button type="button" class="btn btn-info btn-rounded" data-toggle="modal" data-target="#add-contact">Add New Contact</button>  <a href="#" data-toggle="modal" data-target="#crea-utente" class="btn waves-effect waves-light btn-rounded btn-primary justify-content-end">Add User</a>'
+    
+    ] )
+                                                   
+
   <!-- Row -->
     <div class="row">
         <!-- Column -->
@@ -46,13 +32,15 @@
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
-                                <tr>
+                                    <tr>
                                         <td>{{$user->id}}</td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->created_at->format('d/m/Y')}}</td>
-
-                                        <td><span class="label label-success">@foreach ($user->roles as $role) {{$role->name}} @endforeach</span> </td>
+                                        <td>@foreach ($user->roles as $role) 
+                                            {{$role->name=='superadmin' ? '<span class="label label-success">' : '<span class="label label-info">'}} 
+                                            @endforeach
+                                        </td>
                                         <td>
                                             <div class=" button-group">
                                             <a href="{{route('users.edit',$user->id)}}" class="btn btn-sm waves-effect waves-light btn-outline-info" style="float:left;">Edit</a>
@@ -66,33 +54,84 @@
                                 @endforeach
 
                             </tbody>
+                          
                         </table>
                     </div>
                 </div>
             </div>
+
+
+            </div>
+
+                    
         </div>
 
     </div>
 
+    <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Add New Contact</h4> 
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('users.index') }}">
+                                        @csrf
+                            <div class="form-group">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Nome">
+
+                                                @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+
+                                                @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                            </div>
+                            <div class="form-group">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+
+                                                @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                            </div>
+                            <div class="form-group">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"  placeholder="Confirm Password">
+                            </div>
+                            <div class="col-md-12 m-b-20">
+                                        <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Upload Contact Image</span>
+                                            <input type="file" class="upload"> </div>
+                                    </div>
+                    </div>
+                        <div class="modal-footer">
+                        <button type="sumbit" class="btn btn-info waves-effect">Save</button>
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+    
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 
     @include('admin.users.modalform')
+
 @endsection
 
-<script>
-    function ConfirmDelete()
-    {
-      var x = confirm("Are you sure you want to delete?");
-      if (x)
-
-          return;
-      else
-        return false;
-    }
 
 
-    </script>
-
-@push('script')
+    @push('script')
      <!-- This is data table -->
     <script src="{{url('/')}}/assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <!-- start - This is for export functionality only -->
@@ -105,50 +144,34 @@
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <!-- end - This is for export functionality only -->
     <script>
-    $(document).ready(function() {
-        $('#myTable').DataTable();
-        $(document).ready(function() {
-            var table = $('#example').DataTable({
+  
+  function ConfirmDelete()
+    {
+      var x = confirm("Are you sure you want to delete?");
+      if (x)
+
+          return;
+      else
+        return false;
+    }
+
+     $(document).ready(function() {
+            var table = $('#myTable').DataTable({
                 "columnDefs": [{
                     "visible": false,
                     "targets": 2
                 }],
                 "order": [
-                    [2, 'asc']
+                    [0, 'asc']
                 ],
-                "displayLength": 25,
-                "drawCallback": function(settings) {
-                    var api = this.api();
-                    var rows = api.rows({
-                        page: 'current'
-                    }).nodes();
-                    var last = null;
-                    api.column(2, {
-                        page: 'current'
-                    }).data().each(function(group, i) {
-                        if (last !== group) {
-                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
-                            last = group;
-                        }
-                    });
-                }
+                "displayLength": 10,
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'pdf', 'print'
+                ]
             });
-            // Order by the grouping
-            $('#example tbody').on('click', 'tr.group', function() {
-                var currentOrder = table.order()[0];
-                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
-                    table.order([2, 'desc']).draw();
-                } else {
-                    table.order([2, 'asc']).draw();
-                }
-            });
+           
         });
-    });
-    $('#example23').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    });
-    </script>
+ 
+</script>
 @endpush

@@ -61,7 +61,7 @@
             <div class="container-fluid">
 
                 <!-- Bread crumb and right sidebar toggle -->
-                @yield('breadcrumb')
+                {{-- @yield('breadcrumb') --}}
                 <!-- End Bread crumb and right sidebar toggle -->
 
 

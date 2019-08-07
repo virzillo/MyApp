@@ -87,7 +87,7 @@
                         </li>
 
                         <!-- Language -->
-                       @include('layouts.partials.languages')
+                       {{-- @include('layouts.partials.languages') --}}
                     </ul>
                 </div>
             </nav>

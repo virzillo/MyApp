@@ -1,6 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
+
+
+@include('widgets.breadcrumb', [
+    'titolo' => '',
+    'posizione' => '',
+    'pulsante' => ' '
+    ] )
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

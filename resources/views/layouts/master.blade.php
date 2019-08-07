@@ -8,9 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    
+ <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{url('/')}}/assets/images/favicon.png">
     <title>@yield('title')</title>
+  
     <!-- Bootstrap Core CSS -->
     <link href="{{url('/')}}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -20,15 +24,14 @@
     <!-- You can change the theme colors from here -->
     <link href="{{url('/')}}/css/colors/blue.css" id="theme" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
 
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+
+
+    <!-- Styles -->
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+  
 </head>
 
 <body class="fix-header card-no-border">
@@ -58,7 +61,7 @@
         <div class="page-wrapper">
             <!-- Container fluid  -->
 
-            <div class="container-fluid">
+            <div class="container-fluid" id="app">
 
                 <!-- Bread crumb and right sidebar toggle -->
                 {{-- @yield('breadcrumb') --}}
@@ -97,13 +100,18 @@
     <!-- End Wrapper -->
 
 
-
+  
 
     <!-- All Jquery -->
     <script src="{{url('/')}}/assets/plugins/jquery/jquery.min.js"></script>
+         <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{url('/')}}/assets/plugins/bootstrap/js/popper.min.js"></script>
     <script src="{{url('/')}}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    
+     
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="{{url('/')}}/js/jquery.slimscroll.js"></script>
     <!--Wave Effects -->
@@ -114,14 +122,17 @@
     <script src="{{url('/')}}/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <script src="{{url('/')}}/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!--Custom JavaScript -->
+   
+
     <script src="{{url('/')}}/js/custom.min.js"></script>
+  
     @stack('script')
 
 
     <!-- Style switcher -->
     <script src="{{url('/')}}/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-
+    
     <script>
             @if(Session::has('message'))
             var type = "{{ Session::get('alert-type') }}";
@@ -144,6 +155,9 @@
             }
             @endif
         </script>
+
+   
+  
 </body>
 
 </html>

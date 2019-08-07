@@ -11,7 +11,7 @@ export default {
 
     axios.post("api/vue", {}).then(response => {
       this.test = response.data;
-      console.log("dati recuperati");
+      console.log(response.data);
     });
   },
 

@@ -15,9 +15,11 @@ class VueController extends Controller
     public function index()
     {
         return [
-            'name' => 'add',
+            'name' => 'inserisci',
             'type' => 'submit'
         ];
+        // $users = User::all();
+        // return $users;
     }
 
     /**

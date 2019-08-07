@@ -1,20 +1,19 @@
 @extends('layouts.master')
 
 @section('title','Creazione Customers')
-    
+
 @section('content')
 
 @include('widgets.breadcrumb', [
     'titolo' => 'Customers',
     'posizione' => 'Customers',
     'pulsante' => ''
-    
     ] )
 
   <!-- Row -->
     <div class="row">
         <!-- Column -->
-        <div class="col-lg-12">
+        <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Customers</h4>
@@ -89,12 +88,12 @@
     $(document).ready(function() {
 
         $('#myTable').DataTable({
-               
-                 "displayLength": 10,
-                  "order": [
+
+                    "displayLength": 10,
+                    "order": [
                     [0, 'asc']
                 ],
-                
+
             });
     });
     function ConfirmDelete()
@@ -107,6 +106,6 @@
         return false;
     }
 
-      
+
     </script>
 @endpush

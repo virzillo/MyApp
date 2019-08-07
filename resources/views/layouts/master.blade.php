@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
  <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{url('/')}}/assets/images/favicon.png">
     <title>@yield('title')</title>
-  
+
     <!-- Bootstrap Core CSS -->
     <link href="{{url('/')}}/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -24,14 +24,11 @@
     <!-- You can change the theme colors from here -->
     <link href="{{url('/')}}/css/colors/blue.css" id="theme" rel="stylesheet">
 
+    {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script> --}}
+
+
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
-
-
-
-
-    <!-- Styles -->
-    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
-  
 </head>
 
 <body class="fix-header card-no-border">
@@ -93,25 +90,23 @@
 
 
         </div>
-        <!-- ============================================================== -->
         <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
     <!-- End Wrapper -->
 
 
-  
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+
 
     <!-- All Jquery -->
     <script src="{{url('/')}}/assets/plugins/jquery/jquery.min.js"></script>
-         <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Scripts -->
 
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{url('/')}}/assets/plugins/bootstrap/js/popper.min.js"></script>
     <script src="{{url('/')}}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    
-     
+
+
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="{{url('/')}}/js/jquery.slimscroll.js"></script>
     <!--Wave Effects -->
@@ -122,17 +117,16 @@
     <script src="{{url('/')}}/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <script src="{{url('/')}}/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
     <!--Custom JavaScript -->
-   
+
 
     <script src="{{url('/')}}/js/custom.min.js"></script>
-  
-    @stack('script')
+
 
 
     <!-- Style switcher -->
     <script src="{{url('/')}}/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-    
+
     <script>
             @if(Session::has('message'))
             var type = "{{ Session::get('alert-type') }}";
@@ -156,8 +150,13 @@
             @endif
         </script>
 
-   
-  
+         <!-- This is data table -->
+  <script src="{{url('/')}}/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+
+    @stack('script')
+
+
+
 </body>
 
 </html>

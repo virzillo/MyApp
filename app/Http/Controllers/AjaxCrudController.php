@@ -39,6 +39,25 @@ class AjaxCrudController extends Controller
         return view('home',compact('companies'));
     }
 
+    public function getcompanies(){
+
+
+
+        if(request()->ajax())
+        {
+            return datatables()->of(Company::latest()->get())
+                    ->addColumn('action', function($dsata){
+                        $button = '<button type="button" name="edit" id="'.$dsata->id.'" class="edit btn btn-primary btn-sm">Edit</button>';
+                        $button .= '&nbsp;&nbsp;';
+                        $button .= '<button type="button" name="delete" id="'.$dsata->id.'" class="delete btn btn-danger btn-sm">Delete</button>';
+                        return $button;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+
+
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -19,6 +19,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('ajax-crud', 'AjaxCrudController');
+Route::get('user/getcompanies', 'UserController@getcompanies')->name('user.getcompanies');
 
 Route::post('ajax-crud/update', 'AjaxCrudController@update')->name('ajax-crud.update');
 

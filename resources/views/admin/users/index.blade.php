@@ -6,20 +6,21 @@
 @include('widgets.breadcrumb', [
     'titolo' => 'User',
     'posizione' => 'User',
-    'pulsante' => ' <button type="button" class="btn btn-info btn-rounded" data-toggle="modal" data-target="#add-contact">Add New Contact</button>  <a href="#" data-toggle="modal" data-target="#crea-utente" class="btn waves-effect waves-light btn-rounded btn-primary justify-content-end">Add User</a>'
-    
+    'pulsante' => ' '
+
     ] )
-                                                   
+
 
   <!-- Row -->
     <div class="row">
         <!-- Column -->
-        <div class="col-lg-12">
+        <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Utenti</h4>
+                    <button type="button" class="btn btn-info btn-rounded" data-toggle="modal" data-target="#add-contact">Add New Contact</button>  <a href="#" data-toggle="modal" data-target="#crea-utente" class="btn waves-effect waves-light btn-rounded btn-primary justify-content-end">Add User</a>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="myTable">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -37,8 +38,8 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->created_at->format('d/m/Y')}}</td>
-                                        <td>@foreach ($user->roles as $role) 
-                                            {{$role->name=='superadmin' ? '<span class="label label-success">' : '<span class="label label-info">'}} 
+                                        <td>@foreach ($user->roles as $role)
+                                            {{$role->name}}
                                             @endforeach
                                         </td>
                                         <td>
@@ -54,7 +55,7 @@
                                 @endforeach
 
                             </tbody>
-                          
+
                         </table>
                     </div>
                 </div>
@@ -63,7 +64,7 @@
 
             </div>
 
-                    
+
         </div>
 
     </div>
@@ -73,7 +74,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Add New Contact</h4> 
+                    <h4 class="modal-title" id="myModalLabel">Add New Contact</h4>
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ route('users.index') }}">
@@ -118,7 +119,7 @@
                                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                         </div>
                     </form>
-    
+
             </div>
             <!-- /.modal-content -->
         </div>
@@ -144,7 +145,7 @@
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <!-- end - This is for export functionality only -->
     <script>
-  
+
   function ConfirmDelete()
     {
       var x = confirm("Are you sure you want to delete?");
@@ -165,13 +166,13 @@
                     [0, 'asc']
                 ],
                 "displayLength": 10,
-                dom: 'Bfrtip',
-                buttons: [
-                    'csv', 'pdf', 'print'
-                ]
+                // dom: 'Bfrtip',
+                // buttons: [
+                //     'csv', 'pdf', 'print'
+                // ]
             });
-           
+
         });
- 
+
 </script>
 @endpush

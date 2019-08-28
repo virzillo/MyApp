@@ -18,6 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('ajax-crud', 'AjaxCrudController');
+
+Route::post('ajax-crud/update', 'AjaxCrudController@update')->name('ajax-crud.update');
+
+Route::get('ajax-crud/destroy/{id}', 'AjaxCrudController@destroy');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:superadmin']], function () {

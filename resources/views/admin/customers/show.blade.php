@@ -5,39 +5,25 @@
 
 
 @include('widgets.breadcrumb', [
-    'titolo' => 'Dettaglio e modifica utente',
-    'posizione' => 'User',
+    'titolo' => 'Dettaglio e modifica Cliente',
+    'posizione' => 'Cliente',
     'pulsante' => ' '
 
     ] )
   <!-- Row -->
   <div class="row">
-        <!-- Column -->
-        <div class="col-lg-4 col-xlg-3 col-md-5">
-            <div class="card"> <img class="card-img" src="{{url('/')}}/assets/images/background/socialbg.jpg" alt="Card image">
-                <div class="card-img-overlay card-inverse social-profile d-flex ">
-                    <div class="align-self-center" style="margin:auto;"> <img src="{{url('/')}}/assets/images/users/1.jpg" class="img-circle" width="100">
-                        <h4 class="card-title">{{$user->name}}</h4>
-                        <h6 class="card-subtitle">{{$user->email}}</h6>
-                        <p class="text-white">
-                            @foreach ($user->roles as $role)
-                            Ruolo: {{$role->name}}
-                            @endforeach    
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!-- Column -->
+      
         <!-- Column -->
         <div class="col-lg-8 col-xlg-9 col-md-7">
             <div class="card">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs profile-tab" role="tablist">
-                        <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#settings" role="tab" aria-expanded="true">Dati</a> </li>
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#settings" role="tab" aria-expanded="true">Dati</a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#log" role="tab" aria-expanded="false">Operazioni</a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#log" role="tab" aria-expanded="false">Fatture</a> </li>
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#log" role="tab" aria-expanded="false">Altro</a> </li>
 
-                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#log" role="tab" aria-expanded="false">Log operazioni</a> </li>
+
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
@@ -46,7 +32,7 @@
                         <div class="card-body">
                             <div class="profiletimeline">
                                 <div class="sl-item">
-                                    <div class="sl-left"> <img src="{{url('/')}}/assets/images/users/1.jpg" alt="user" class="img-circle"> </div>
+                                    <div class="sl-left"> </div>
                                     <div class="sl-right">
                                         <div><a href="#" class="link">John Doe</a> <span class="sl-date">5 minutes ago</span>
                                             <p>assign a new task <a href="#"> Design weblayout</a></p>
@@ -104,48 +90,7 @@
 
                     <div class="tab-pane active" id="settings" role="tabpanel" aria-expanded="true">
                         <div class="card-body">
-                                <form class="" action="{{route('users.update', $user->id)}}" method="POST">
-                                        {{ method_field('PUT') }}
-                                        @csrf
-                                        <div class="form-group">
-                                            <label class="col-md-12">Nome</label>
-                                            <div class="col-md-12">
-                                                <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line" name="name" value="{{ $user->name}} " required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="example-email" class="col-md-12">Email</label>
-                                            <div class="col-md-12">
-                                                <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="email" id="email" value="{{$user->email}}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="example-password" class="col-md-12">Password</label>
-                                            
-                                            <div class="col-md-12">
-                                                                                                       <input type="password" value="" class="form-control" name="password" required>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-12">Ruolo</label>
-                                            <div class="col-sm-12">
-                                                <select class="form-control form-control-line" name="role" required>
-                                                    <option value="" disabled>Seleziona Ruolo</option>
-                                                    @foreach ($roles as $item)
-                                                    <option  value="{{$item->id}}">{{$item->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <button type="submit" class="btn btn-success">Salva modifiche</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                               @include('admin.customers.editform')
                         </div>
                     </div>
                 </div>

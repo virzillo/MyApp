@@ -1,164 +1,46 @@
-{{-- <div class="modal fade show" id="crea-customer" tabindex="-1" role="dialog" aria-labelledby="crea-utenteLabel"
-    style="display:none;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="crea-utenteLabel">Crea Customer</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">×</span></button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="{{ route('customers.store') }}">
-                    @csrf
-                    <div class="form-group">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                            name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
-                            placeholder="Nome">
-                        @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
-
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <select name="active" id="active" class="form-control">
-                            <option value="" disabled>seleziona stato</option>
-                            <option value="1">Attivo</option>
-                            <option value="0">Inttivo</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select name="type" id="type" class="form-control">
-                            <option value="" disabled>seleziona tipo cliente</option>
-                            <option value="1">Cliente</option>
-                            <option value="0">Potenziale</option>
-                        </select>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-lg-9">
-                            <select name="company_id" id="company_id" class="form-control">
-                                @foreach ($companies as $company)
-                                <option value="{{$company->id}}">{{$company->name}}</option>
-
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-lg-3">
-                            <a href="#" data-toggle="modal" data-target="#crea-company"
-                                class="btn waves-effect waves-light btn-rounded btn-primary justify-content-end"> <i
-                                    class="ti-plus text" aria-hidden="true"></i></a>
-
-                        </div>
-
-
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Salva</button>
-            </div>
-            </form>
-
-        </div>
-    </div>
-</div>
-
-
-<div class="modal fade bs-example-modal-sm" id="crea-company" tabindex="-1" role="dialog" aria-labelledby="companyLabel"
-    style="display: none;" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="companyLabel">Small modal</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="{{ route('company.store') }}">
-                    @csrf
-                    <div class="form-group">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                            name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
-                            placeholder="Nome">
-
-                    </div>
-                    <div class="form-group">
-                        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
-                            name="phone" value="{{ old('phone') }}" required autocomplete="phone" placeholder="phone">
-
-                    </div>
-
-
-
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Crea</button>
-            </div>
-            </form>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div> --}}
-
-
-<div class="modal fade show" id="crea-customer" tabindex="-1" role="dialog"
-                            aria-labelledby="crea-customerLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document" style="max-width: 800px !important;">
-                                <div class="modal-content">
-                                    <div class="modal-header" style="    flex: 0 0 60px !important;">
-                                        <h5 class="modal-title" id="exampleModalLabel">Creazione cliente potenziale</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <h6 class="mb-4">Anagrafica</h6>
-                                        <form action="{{ route('customers.store') }}" method="POST">
-                                                @csrf
+ <form class="" action="{{route('customers.update', $customer->id)}}" method="POST">
+                                        {{ method_field('PUT') }}
+                                        @csrf
+                           
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <input type="text" class="form-control" id="nome" name="nome"
-                                                    placeholder="Nome" required>
+                                                    placeholder="Nome"  value="{{$customer->nome}}">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <input type="text" class="form-control" id="cognome" name="cognome"
-                                                    placeholder="Cognome" required>
+                                                    placeholder="Cognome"  value="{{$customer->cognome}}">
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                     <select class="form-control" tabindex="-1" name="sesso" id="sesso" aria-hidden="true" required>
-                                                            <option value="" selected data-default>Seleziona Sesso</option>
-                                                        <option value="maschio">M</option>
-                                                        <option value="femmina">F</option>
+                                                          
+@if ($customer->sesso=='maschio')
+     <option value="maschio">M</option>
+     <option value="femmina">F</option>
+    
+     @else
+     <option value="femmina">F</option>
+    <option value="maschio">M</option>
+     
+@endif
+                                                       
                                                     </select>
                                             </div>
                                             <div class="form-group col-md-8">
                                                 <input type="text" class="form-control" id="codfiscale"
-                                                    name="codfiscale" placeholder="Codice Fiscale" required>
+                                                    name="codfiscale" placeholder="Codice Fiscale" value="{{$customer->codfiscale}}" >
                                             </div>
                                         </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <input type="text" class="form-control" id="telefono" name="telefono"
-                                                        placeholder="Telefono" required>
+                                                        placeholder="Telefono" value="{{$customer->telefono}}" >
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <input type="text" class="form-control" id="cellulare" name="cellulare"
-                                                        placeholder="Cellulare" required>
+                                                        placeholder="Cellulare" value="{{$customer->cellulare}}" >
                                                 </div>
                                             </div>
 
@@ -166,11 +48,11 @@
                                             <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <input type="email" class="form-control" id="email" name="email"
-                                                            placeholder="Email" required>
+                                                            placeholder="Email" value="{{$customer->email}}" >
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <input type="password" class="form-control" id="password" name="password"
-                                                            placeholder="Password" required>
+                                                            placeholder="Password" value="{{$customer->password}}" >
                                                     </div>
                                                 </div>
 
@@ -179,19 +61,21 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <input type="text" class="form-control" id="citta" name="citta"
-                                                    placeholder="Città" required>
+                                                    placeholder="Città" value="{{$customer->citta}}" >
                                             </div>
 
                                             <div class="form-group col-md-6" id="datepicker">
                                                 <input class="form-control datepicker" id="datepicker" name="data" type="date"
-                                                    placeholder="Data di nascita" required>
+                                                    placeholder="Data di nascita" value="{{$customer->data}}" >
                                             </div>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-12">
-                                                <select class="form-control" tabindex="-1" aria-hidden="true" required
+                                                <select class="form-control" tabindex="-1" aria-hidden="true" 
                                                     id="provincia" name="provincia">
+                                                    <option value="{{$customer->provincia}}">{{$customer->provincia}}</option>
+
                                                     <option value="ag">Agrigento</option>
                                                     <option value="al">Alessandria</option>
                                                     <option value="an">Ancona</option>
@@ -311,17 +195,18 @@
 
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="indirizzo" name="indirizzo"
-                                                placeholder="Indirizzo" required>
+                                                placeholder="Indirizzo"  {{$customer->indirizzo}}>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <input type="text" class="form-control" id="cittadom" name="cittadom"
-                                                    placeholder="Città" required>
+                                                    placeholder="Città"  {{$customer->cittadom}}>
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <select class="form-control" tabindex="-1" aria-hidden="true"
                                                     id="provinciadom" name="provinciadom" required>
+                                                    <option value="{{$customer->provinciadom}}">{{$customer->provinciadom}}</option>
                                                     <option value="ag">Agrigento</option>
                                                     <option value="al">Alessandria</option>
                                                     <option value="an">Ancona</option>
@@ -436,20 +321,19 @@
                                             </div>
                                             <div class="form-group col-md-2">
                                                 <input type="text" class="form-control" id="cap" name="cap"
-                                                    placeholder="CAP" required>
+                                                    placeholder="CAP" value="{{$customer->cap}}" >
                                             </div>
                                         </div>
 
                                         <h6 class="mb-4">Altre Info</h6>
                                         <div class="form-row">
-
                                             <div class="form-group col-md-6">
                                                 <input type="text" class="form-control" name="titolostudio"
-                                                    placeholder="Titolo di Studio" required>
+                                                    placeholder="Titolo di Studio"  value="{{$customer->titolostudio}}">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <input type="text" class="form-control" name="occupazione"
-                                                    placeholder="Occupazione" required>
+                                                    placeholder="Occupazione"  value="{{$customer->occupazione}}">
                                             </div>
                                         </div>
 
@@ -461,7 +345,3 @@
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
-
-                                </div>
-                            </div>
-                        </div>

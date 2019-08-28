@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:superadmin']], functio
     Route::resource('users', 'UserController');
 
     Route::resource('customers', 'CustomerController');
+    Route::resource('courses', 'CourseController');
 
     Route::post('/company', 'CompanyController@store')->name('company.store');
 });

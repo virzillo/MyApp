@@ -46,19 +46,25 @@
                                 <li><a href="widget-charts.html">Widget Charts</a></li>
                             </ul> --}}
                         </li>
-                        <li>
-                            <a class=" waves-effect waves-dark" href="{{route('clients.index')}}" aria-expanded="false"><i class="mdi  mdi-gauge"></i><span class="hide-menu">Client</span></a>
-
-                        </li>
+                       
                           <li>
                             <a class=" waves-effect waves-dark" href="{{route('customers.index')}}" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Customer</span></a>
 
                         </li>
+                         <li>
+                            <a class=" waves-effect waves-dark" href="{{route('courses.index')}}" aria-expanded="false"><i class="mdi mdi-file-chart"></i><span class="hide-menu">Corsi</span></a>
+
+                        </li>
+                         <li>
+                            <a class=" waves-effect waves-dark" href="#1" aria-expanded="false"><i class="mdi  mdi-tables"></i><span class="hide-menu">Magazzino</span></a>
+
+                        </li>
+                        <li class="nav-devider"></li>
                         <li>
                             <a class=" waves-effect waves-dark" href="{{route('users.index')}}" aria-expanded="false"><i class="mdi  mdi-account-convert"></i><span class="hide-menu">Utenti</span></a>
 
                         </li>
-
+                       
                         {{-- <li class="nav-devider"></li>
                         <li class="nav-small-cap">FORMS, TABLE &amp; WIDGETS</li>
                         <li>

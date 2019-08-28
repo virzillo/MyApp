@@ -184,7 +184,7 @@
     <!-- /.modal-dialog -->
 </div>
 @push('script')
-
+{{-- 
 
 <script>
     $(document).ready(function(){
@@ -370,7 +370,7 @@
      });
 
     });
-    </script>
+    </script> --}}
 @endpush
 
 

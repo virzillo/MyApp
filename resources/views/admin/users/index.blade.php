@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Utenti</h4>
-                    <button type="button" class="btn btn-info btn-rounded" data-toggle="modal" data-target="#add-contact">Add New Contact</button>  <a href="#" data-toggle="modal" data-target="#crea-utente" class="btn waves-effect waves-light btn-rounded btn-primary justify-content-end">Add User</a>
+                    <a href="#" data-toggle="modal" data-target="#crea-utente" class="btn waves-effect waves-light btn-rounded btn-primary justify-content-end">Add User</a>
                     <div class="table-responsive">
                         <table class="table" id="myTable">
                             <thead>
@@ -44,7 +44,7 @@
                                         </td>
                                         <td>
                                             <div class=" button-group">
-                                            <a href="{{route('users.edit',$user->id)}}" class="btn btn-sm waves-effect waves-light btn-outline-info" style="float:left;">Edit</a>
+                                            <a href="{{route('users.show',$user->id)}}" class="btn btn-sm waves-effect waves-light btn-outline-info" style="float:left;">Edit</a>
                                             <form action="{{route('users.destroy',$user->id)}}" method="POST" >{{ method_field('DELETE') }} {{csrf_field()}}
                                                     <button type="submit" name="del-user" class="btn btn-sm waves-effect waves-light btn-outline-danger" onclick="return ConfirmDelete()">
                                                         <i class="ft-x" aria-hidden="true" ></i>Elimina</button>
@@ -69,62 +69,7 @@
 
     </div>
 
-    <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Add New Contact</h4>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ route('users.index') }}">
-                                        @csrf
-                            <div class="form-group">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Nome">
-
-                                                @error('name')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
-
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                            </div>
-                            <div class="form-group">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
-
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                            </div>
-                            <div class="form-group">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"  placeholder="Confirm Password">
-                            </div>
-                            <div class="col-md-12 m-b-20">
-                                        <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>Upload Contact Image</span>
-                                            <input type="file" class="upload"> </div>
-                                    </div>
-                    </div>
-                        <div class="modal-footer">
-                        <button type="sumbit" class="btn btn-info waves-effect">Save</button>
-                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
-                        </div>
-                    </form>
-
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
+   
 
     @include('admin.users.modalform')
 

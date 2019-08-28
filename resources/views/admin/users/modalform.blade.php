@@ -37,8 +37,20 @@
                                             </span>
                                         @enderror
                     </div>
+
+                  
+{{-- 
                      <div class="form-group">
                              <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"  placeholder="Confirm Password">
+                    </div> --}}
+                       <div class="form-group">
+                        <select name="role" id="role" class="form-control">
+                              <option value="" selected data-default>Seleziona Ruolo</option>
+                            @foreach ($roles as $role)
+                            <option value="{{$role->id}}">{{$role->name}}</option>
+                            @endforeach
+                        </select>
+                                        
                     </div>
             </div>
             <div class="modal-footer">

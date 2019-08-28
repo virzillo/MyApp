@@ -18,7 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
+<<<<<<< HEAD
 // Route::resource('ajax-crud', 'AjaxCrudController');
+=======
+Route::resource('ajax-crud', 'AjaxCrudController');
+Route::get('user/getcompanies', 'UserController@getcompanies')->name('user.getcompanies');
+>>>>>>> 8b5dd385b05be11c1e6b35ef86177088149ae1d9
 
 // Route::post('ajax-crud/update', 'AjaxCrudController@update')->name('ajax-crud.update');
 

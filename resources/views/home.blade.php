@@ -98,7 +98,14 @@
                             @endforeach
                         </select>
                     </div>
-        </div>
+                    <div class="col-lg-3">
+                            <a href="#" data-toggle="modal" data-target="#crea-company"
+                                class="btn waves-effect waves-light btn-rounded btn-primary justify-content-end"> <i
+                                    class="ti-plus text" aria-hidden="true"></i></a>
+
+                            </div>
+                </div>
+                            
               {{-- <div class="form-group">
                <label class="control-label col-md-4">Select Profile Image : </label>
                <div class="col-md-8">
@@ -137,6 +144,45 @@
        </div>
    </div>
 
+
+   
+<div class="modal fade bs-example-modal-sm" id="crea-company" tabindex="-1" role="dialog" aria-labelledby="companyLabel"
+    style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="companyLabel">Small modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('company.store') }}">
+                    @csrf
+                    <div class="form-group">
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                            name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
+                            placeholder="Nome">
+
+                    </div>
+                    <div class="form-group">
+                        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
+                            name="phone" value="{{ old('phone') }}" required autocomplete="phone" placeholder="phone">
+
+                    </div>
+
+
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Crea</button>
+            </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 @push('script')
 
 

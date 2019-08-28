@@ -17,10 +17,11 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
+                    <a href="#" data-toggle="modal" data-target="#crea-utente" class="btn waves-effect waves-light btn-rounded btn-primary pull-right">Add User</a>
+
                     <h4 class="card-title">Utenti</h4>
-                    <a href="#" data-toggle="modal" data-target="#crea-utente" class="btn waves-effect waves-light btn-rounded btn-primary justify-content-end">Add User</a>
                     <div class="table-responsive">
-                        <table class="table" id="myTable">
+                        <table class="table stylish-table" id="myTable">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -28,7 +29,7 @@
                                     <th>Email</th>
                                     <th>Data</th>
                                     <th>Ruolo</th>
-                                    <th></th>
+                                    <th>Azioni</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,8 +44,8 @@
                                             @endforeach
                                         </td>
                                         <td>
-                                            <div class=" button-group">
-                                            <a href="{{route('users.show',$user->id)}}" class="btn btn-sm waves-effect waves-light btn-outline-info" style="float:left;">Edit</a>
+                                            <div class=" button-group" style="display:flex;">
+                                            <a href="{{route('users.show',$user->id)}}" class="btn btn-sm waves-effect waves-light btn-outline-info" >Edit</a>
                                             <form action="{{route('users.destroy',$user->id)}}" method="POST" >{{ method_field('DELETE') }} {{csrf_field()}}
                                                     <button type="submit" name="del-user" class="btn btn-sm waves-effect waves-light btn-outline-danger" onclick="return ConfirmDelete()">
                                                         <i class="ft-x" aria-hidden="true" ></i>Elimina</button>
@@ -103,10 +104,11 @@
 
      $(document).ready(function() {
             var table = $('#myTable').DataTable({
-                "columnDefs": [{
-                    "visible": false,
-                    "targets": 2
-                }],
+               
+                 "columnDefs": [{ 
+                    "orderable": false, 
+                    "targets":[1,2] 
+                     }],
                 "order": [
                     [0, 'asc']
                 ],

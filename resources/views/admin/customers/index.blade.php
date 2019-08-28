@@ -20,29 +20,31 @@
 
                     <h4 class="card-title">Customers</h4>
                     <div class="table-responsive">
-                        <table class="table" id="myTable">
+                        <table class="table stylish-table" id="myTable">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nome</th>
+                                    <th colspan="2">Nome</th>
                                     <th>Email</th>
+                                    <th>Telefono</th>
+
                                     <th>Tipo</th>
                                     <th>Stato</th>
-                                    <th>Azienda</th>
                                     <th>Data</th>
 
-                                    <th></th>
+                                    <th>Azioni</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($customers as $customer)
                                     <tr>
                                         <td>{{$customer->id}}</td>
-                                        <td>{{$customer->nome}}</td>
+                                        <td><a href="{{route('customers.show',$customer->id)}}"  data-toggle="tooltip" data-original-title="Vai alla pagina del cliente"> {{$customer->nome}} {{$customer->cognome}}</a></td>
+                                        <td></td>
                                         <td>{{$customer->email}}</td>
-                                        <td>{{$customer->type}}</td>
-                                        <td>{{$customer->active}}</td>
                                         <td>{{$customer->telefono}} </td>
+                                        <td><span class="badge badge-danger">{{$customer->type}}</span> </td>
+                                        <td><span class="badge badge-success">{{$customer->active}}</span></td>
                                         <td>{{$customer->created_at->format('d/m/Y')}}</td>
 
                                         <td>
@@ -93,7 +95,9 @@
     $(document).ready(function() {
 
         $('#myTable').DataTable({
-
+                  "columnDefs": [
+                        { "orderable": false, "targets":[1,2,3,4,5,6,8]  }
+                    ],
                     "displayLength": 10,
                     "order": [
                     [0, 'asc']

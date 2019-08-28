@@ -36,4 +36,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:superadmin']], functio
 
     Route::post('/company', 'CompanyController@store')->name('company.store');
     Route::get('/calendar', 'DashboardController@calendar')->name('calendar.index');
+
+    Route::resource('settings', 'SettingController');
+    Route::resource('storage', 'StorageController');
 });

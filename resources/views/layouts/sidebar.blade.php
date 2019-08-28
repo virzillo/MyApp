@@ -56,7 +56,7 @@
 
                         </li>
                          <li>
-                            <a class=" waves-effect waves-dark" href="#1" aria-expanded="false"><i class="mdi  mdi-tables"></i><span class="hide-menu">Magazzino</span></a>
+                            <a class=" waves-effect waves-dark" href="{{route('storage.index')}}" aria-expanded="false"><i class="mdi  mdi-buffer"></i><span class="hide-menu">Magazzino</span></a>
 
                         </li>
                            <li>
@@ -68,7 +68,10 @@
                             <a class=" waves-effect waves-dark" href="{{route('users.index')}}" aria-expanded="false"><i class="mdi  mdi-account-convert"></i><span class="hide-menu">Utenti</span></a>
 
                         </li>
-                       
+                         <li>
+                            <a class=" waves-effect waves-dark" href="{{route('settings.index')}}" aria-expanded="false"><i class="mdi  mdi-settings"></i><span class="hide-menu">Settings</span></a>
+
+                        </li>
                         {{-- <li class="nav-devider"></li>
                         <li class="nav-small-cap">FORMS, TABLE &amp; WIDGETS</li>
                         <li>
@@ -117,7 +120,7 @@
             <!-- Bottom points-->
             <div class="sidebar-footer">
                 <!-- item-->
-                <a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
+            <a href="{{route('settings.index')}}" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
                 <!-- item-->
                 <a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
                 <!-- item-->

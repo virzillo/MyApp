@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Course;
+use App\Module;
 
 class CourseController extends Controller
 {
@@ -30,13 +31,26 @@ class CourseController extends Controller
     {
         $corso = Course::find($id);
         $courses = Course::all();
-
-        return view('admin.courses.index', compact('corso', 'courses'));
+        $modules = Module::where('course_id', $id)->get();
+        return view('admin.courses.index', compact('corso', 'courses', 'modules'));
     }
     public function update(Request $request, $id)
     {
-        $request->update($this->validateRequest());
-        return back();
+
+        $this->validateRequest();
+
+        $course = Course::find($id);
+        $course->nome = $request->get('nome');
+        $course->descrizione = $request->get('descrizione');
+        $course->costo = $request->get('costo');
+
+        $course->save();
+
+        $notification = array(
+            'message' => 'Corso modificato con successo!',
+            'alert-type' => 'success'
+        );
+        return back()->with($notification);
     }
     /**
      * Store a newly created resource in storage.
@@ -46,14 +60,18 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
+        $modules = Module::all();
+        $courses = Course::all();
 
         Course::create($this->validateRequest());
         $notification = array(
             'message' => 'Corso inserito con successo!',
             'alert-type' => 'success'
         );
-        return back()->with($notification);
+        return view('admin.courses.index')->with($notification, $modules, $courses);
     }
+
+
 
     private function validateRequest()
     {
@@ -65,7 +83,7 @@ class CourseController extends Controller
 
         ]);
     }
-    public function delete($id)
+    public function destroy($id)
     {
         $course = Course::find($id);
         $course->delete();

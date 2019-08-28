@@ -59,6 +59,10 @@
                             <a class=" waves-effect waves-dark" href="#1" aria-expanded="false"><i class="mdi  mdi-tables"></i><span class="hide-menu">Magazzino</span></a>
 
                         </li>
+                           <li>
+                            <a class=" waves-effect waves-dark" href="{{route('calendar.index')}}" aria-expanded="false"><i class="mdi mdi-calendar-text"></i><span class="hide-menu">Calendario</span></a>
+
+                        </li>
                         <li class="nav-devider"></li>
                         <li>
                             <a class=" waves-effect waves-dark" href="{{route('users.index')}}" aria-expanded="false"><i class="mdi  mdi-account-convert"></i><span class="hide-menu">Utenti</span></a>

@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:superadmin']], functio
 
     Route::resource('customers', 'CustomerController');
     Route::resource('courses', 'CourseController');
+    Route::resource('modules', 'ModuleController');
 
     Route::post('/company', 'CompanyController@store')->name('company.store');
+    Route::get('/calendar', 'DashboardController@calendar')->name('calendar.index');
 });

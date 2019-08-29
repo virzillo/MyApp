@@ -60,6 +60,14 @@
                             <a class=" waves-effect waves-dark" href="{{route('storage.index')}}" aria-expanded="false"><i class="mdi  mdi-buffer"></i><span class="hide-menu">Magazzino</span></a>
 
                         </li>
+                          <li>
+                            <a class=" waves-effect waves-dark" href="{{route('proposal.index')}}" aria-expanded="false"><i class="mdi  mdi-chart-line"></i><span class="hide-menu">Offerte</span></a>
+
+                        </li>
+                        <li>
+                            <a class=" waves-effect waves-dark" href="{{route('classi.index')}}" aria-expanded="false"><i class="mdi mdi-flag-checkered"></i><span class="hide-menu">Classi</span></a>
+
+                        </li>
                            <li>
                             <a class=" waves-effect waves-dark" href="{{route('calendar.index')}}" aria-expanded="false"><i class="mdi mdi-calendar-text"></i><span class="hide-menu">Calendario</span></a>
 

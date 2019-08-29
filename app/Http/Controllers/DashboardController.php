@@ -20,6 +20,13 @@ class DashboardController extends Controller
     {
         return view('admin.calendar.index');
     }
+
+    public function classi()
+    {
+        return view('admin.classrooms.index');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

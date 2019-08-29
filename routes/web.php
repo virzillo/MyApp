@@ -39,8 +39,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:superadmin']], functio
 
     Route::post('/company', 'CompanyController@store')->name('company.store');
     Route::get('/calendar', 'DashboardController@calendar')->name('calendar.index');
+    Route::get('/classi', 'DashboardController@classi')->name('classi.index');
 
     Route::resource('settings', 'SettingController');
     Route::resource('storage', 'StorageController');
+    Route::resource('proposal', 'ProposalController');
+
     Route::post('storage', 'StorageController@add')->name('storage.add');
 });

@@ -13,7 +13,7 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.offerte.index');
     }
 
     /**

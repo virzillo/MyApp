@@ -144,9 +144,17 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request,  $id)
     {
-        $customer->update($this->validateRequest());
+        $customer = Customer::find($id)->first();
+
+        $customer->nome = $request->get('nome');
+        $customer->cognome = $request->get('cognome');
+        $customer->email = $request->get('email');
+
+        $customer->save();
+
+        // $customer->update($this->validateRequest());
         return back();
     }
 

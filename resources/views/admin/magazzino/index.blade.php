@@ -40,32 +40,28 @@
             </div>
         </div>
 
-        {{-- <div class="col-lg-4 col-md-12">
+        <div class="col-lg-4 col-md-12">
             <div class="card">
                 <div class="card-body bg-info">
-                    <h4 class="text-white card-title">Misc</h4>
-                    <h6 class="card-subtitle text-white m-b-0 op-5">Inserisci acquisti misc</h6> </div>
+                    <h4 class="text-white card-title">EICARD</h4>
+                    <h6 class="card-subtitle text-white m-b-0 op-5">Inserisci seriali EICARD</h6> </div>
                 <div class="card-body">
                     <div class="message-box contact-box">
                         <h2 class="add-ct-btn"><button type="button" class="btn btn-circle btn-lg btn-success waves-effect waves-dark">+</button></h2>
                         <div class="message-widget contact-widget">
+                           
                             <!-- Message -->
                             <a href="#">
+                               
                                 <div class="mail-contnet">
-                                    <h5>Pavan kumar</h5> <span class="mail-desc">200€</span></div>
-                            </a>
-                            <!-- Message -->
-                            <a href="#">
-                                <div class="user-img"> <img src="../assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
-                                <div class="mail-contnet">
-                                    <h5>Sonu Nigam</h5> <span class="mail-desc">pamela1987@gmail.com</span></div>
+                                    <h5>50</h5> <span class="mail-desc">non assegnati</span></div>
                             </a>
                            
                         </div>
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
 </div>
 
         <div class="row">

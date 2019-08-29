@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@push('style')
+    <link href="../assets/plugins/css-chart/css-chart.css" rel="stylesheet">
+@endpush
 @section('title','Creazione Customers')
 
 @section('content')
@@ -9,6 +12,85 @@
     'posizione' => 'Customers',
     'pulsante' => ''
     ] )
+
+
+<div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <!-- Column -->
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light">1</h1>
+                                        <h6 class="text-muted">  <a href="{{route('customer.query')}}" class="" >Potenziali</a></h6></div>
+
+                                    <!-- Column -->
+                                    <div class="col text-right align-self-center">
+                                        <div data-label="20%" class="css-bar m-b-0 css-bar-primary css-bar-20"><i class="mdi mdi-account-circle"></i></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <!-- Column -->
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light">1</h1>
+                                        <h6 class="text-muted">Attivi</h6></div>
+                                    <!-- Column -->
+                                    <div class="col text-right align-self-center">
+                                        <div data-label="30%" class="css-bar m-b-0 css-bar-danger css-bar-20"><i class="mdi mdi-briefcase-check"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <!-- Column -->
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light">0</h1>
+                                        <h6 class="text-muted">Offerte</h6></div>
+                                    <!-- Column -->
+                                    <div class="col text-right align-self-center">
+                                        <div data-label="40%" class="css-bar m-b-0 css-bar-warning css-bar-40"><i class="mdi mdi-star-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <!-- Column -->
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light">0</h1>
+                                        <h6 class="text-muted">Fatture</h6></div>
+                                    <!-- Column -->
+                                    <div class="col text-right align-self-center">
+                                        <div data-label="60%" class="css-bar m-b-0 css-bar-info css-bar-60"><i class="mdi mdi-receipt"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+
 
   <!-- Row -->
     <div class="row">

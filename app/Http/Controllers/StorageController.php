@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Card;
+use Illuminate\Support\Facades\Validator;
+use App\Logcard;
+use Auth;
 
 class StorageController extends Controller
 {
@@ -13,7 +17,9 @@ class StorageController extends Controller
      */
     public function index()
     {
-        return view('admin.magazzino.index');
+        $cards = Card::all();
+        $logcards = Logcard::all();
+        return view('admin.magazzino.index', compact('cards', 'logcards'));
     }
 
     /**
@@ -37,6 +43,51 @@ class StorageController extends Controller
         //
     }
 
+    public function add(Request $request)
+    {
+        // $validator = Validator::make($request->all(), [
+        //     'nome' => 'required|max:255',
+        //     'quantita' => 'required',
+        //     'costo' => 'required',
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return back()
+        //         ->withErrors($validator)
+        //         ->withInput();
+        // }
+        $data = request()->validate([
+            'nome' => 'required|max:255',
+            'quantita' => 'required',
+            'costo' => 'required',
+        ]);
+        $temp_card = Card::where('nome', $data['nome'])->first();
+
+        $card = Card::find($temp_card->id);
+
+        $card->nome = $request->get('nome');
+        $card->quantita = $request->get('quantita');
+        $card->costo = $request->get('costo');
+
+        $card->save();
+
+        Logcard::create([
+            'card_id' => $card->id,
+            'quantita' => $data['quantita'],
+            'operatore' => Auth::user()->id,
+            'costo' => $data['costo'],
+
+        ]);
+        $logcards = Logcard::all();
+        $cards = Card::all();
+
+        $notification = array(
+            'message' => 'Dati inseriti con successo!',
+            'alert-type' => 'success'
+        );
+        return view('admin.magazzino.index', compact('notification', 'logcards', 'cards'));
+        // return back()->with($notification);
+    }
     /**
      * Display the specified resource.
      *

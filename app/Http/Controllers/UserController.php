@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -61,7 +62,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
-        User::create($this->validateRequest());
+        $data = $this->validateRequest();
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
         $notification = array(
             'message' => 'Utente creato con successo!',
             'alert-type' => 'success'
@@ -69,8 +75,8 @@ class UserController extends Controller
         $role = $request->input('role');
         $ruolodaassegnare = Role::where('id', $role)->get()->first();
 
-        $utente = DB::table('users')->latest()->first();
-        $utente->attachRole($ruolodaassegnare);
+        // $utente = DB::table('users')->latest()->first();
+        $user->attachRole($ruolodaassegnare);
 
         return back()->with($notification);
     }
@@ -115,7 +121,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->password = $request->get('password');
+        $user->password = Hash::make($request->get('password'));
         $user->save();
         $ruolo = $request->get('role');
         $user

@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Customer::class);
     }
+
+    public function logcards()
+    {
+        return $this->hasMany(Logcards::class, 'id');
+    }
 }

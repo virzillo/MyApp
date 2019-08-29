@@ -33,6 +33,22 @@ class Customer extends Model
         return $query->where('active', 0);
     }
 
+    //raggruppa tutti gli utenti potenziali
+    //$customers = Customer::potenziali()->orderBy('created_at')->get();
+    public function scopePotenziali($query)
+    {
+        return $query->where('type', 1);
+    }
+    //raggruppo dinamico
+
+    //eseguire la query con
+    //$users = App\User::ofType('0')->get();
+    public function scopeOfType($query, $type)
+    {
+        return $query->where('type', $type);
+    }
+
+
     public function company()
     {
         return $this->belongsTo(Company::class);

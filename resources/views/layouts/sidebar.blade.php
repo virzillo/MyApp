@@ -46,7 +46,8 @@
                                 <li><a href="widget-charts.html">Widget Charts</a></li>
                             </ul> --}}
                         </li>
-                       
+                       @role('superadmin')
+
                           <li>
                             <a class=" waves-effect waves-dark" href="{{route('customers.index')}}" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Customer</span></a>
 
@@ -72,6 +73,8 @@
                             <a class=" waves-effect waves-dark" href="{{route('settings.index')}}" aria-expanded="false"><i class="mdi  mdi-settings"></i><span class="hide-menu">Settings</span></a>
 
                         </li>
+                        @endrole
+
                         {{-- <li class="nav-devider"></li>
                         <li class="nav-small-cap">FORMS, TABLE &amp; WIDGETS</li>
                         <li>
@@ -96,7 +99,8 @@
                                 <li><a href="form-summernote.html">Summernote Editor</a></li>
                                 <li><a href="form-tinymce.html">Tinymce Editor</a></li>
                             </ul>
-                        </li>
+                        </li>--}}
+                        @role('admin')
                         <li>
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Tables</span></a>
                             <ul aria-expanded="false" class="collapse">
@@ -109,7 +113,8 @@
                                 <li><a href="table-bootstrap.html">Bootstrap Tables</a></li>
                                 <li><a href="table-editable-table.html">Editable Table</a></li>
                             </ul>
-                        </li> --}}
+                        </li> 
+                        @endrole
 
 
                     </ul>

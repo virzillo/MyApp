@@ -98,7 +98,6 @@
                             @endforeach
                         </select>
                     </div>
-<<<<<<< HEAD
                     <div class="col-lg-3">
                             <a href="#" data-toggle="modal" data-target="#crea-company"
                                 class="btn waves-effect waves-light btn-rounded btn-primary justify-content-end"> <i
@@ -107,12 +106,6 @@
                             </div>
                 </div>
                             
-=======
-                    <div class="lg-col-3">
-                        <button type="button" name="create_company" id="create_company" class="btn btn-success btn-sm">Create Company</button>
-                    </div>
-        </div>
->>>>>>> 8b5dd385b05be11c1e6b35ef86177088149ae1d9
               {{-- <div class="form-group">
                <label class="control-label col-md-4">Select Profile Image : </label>
                <div class="col-md-8">
@@ -151,41 +144,6 @@
        </div>
    </div>
 
-<<<<<<< HEAD
-=======
-
-   <div id="fmCompany" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-     <div class="modal-content">
-      <div class="modal-header">
-             <h4 class="modal-title">Add New Record</h4>
-             <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-           </div>
-           <div class="modal-body">
-                <div class="table-responsive">
-                        <table class="table table-bordered table-striped" id="ctable" name="ctable">
-                               <thead>
-                                <tr>
-                                        <th width="20%">id</th>
-
-                                        <th width="20%">Name</th>
-                                        <th width="20%">Phone</th>
-
-
-                                    <th width="40%">Action</th>
-                                </tr>
-                               </thead>
-                           </table>
-                </div>
-     </div>
-    </div>
-   </div>
-
-@push('script')
-<script>
-
->>>>>>> 8b5dd385b05be11c1e6b35ef86177088149ae1d9
 
    
 <div class="modal fade bs-example-modal-sm" id="crea-company" tabindex="-1" role="dialog" aria-labelledby="companyLabel"

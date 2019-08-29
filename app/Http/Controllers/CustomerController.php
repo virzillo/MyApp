@@ -19,6 +19,14 @@ class CustomerController extends Controller
         return view('admin.customers.index', compact('customers'));
     }
 
+
+    public function query()
+    {
+        // $customers = Customer::potenziali()->orderBy('created_at')->get();
+        $customers = Customer::ofType('0')->get();
+        return view('admin.customers.index', compact('customers'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
